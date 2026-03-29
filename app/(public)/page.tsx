@@ -1,7 +1,9 @@
+import Hero from "@/src/shared/components/ui/Hero";
+
 export default function Home() {
     return (
         <>
-            <h1>Inicio</h1>
+            <Hero />
         </>
     );
 }
