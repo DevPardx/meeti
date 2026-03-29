@@ -12,5 +12,5 @@ export default function GuestNavigation() {
                 href="/auth/sign-up"
             >Sign Up</Link>
         </nav>
-    )
+    );
 }

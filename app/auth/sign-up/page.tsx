@@ -1,13 +1,15 @@
 import { Metadata } from "next";
+import Heading from "@/src/shared/components/typography/Heading";
+import { generatePageTitle } from "@/src/shared/utils/metadata";
 
 export const metadata: Metadata = {
-    title: "Sign Up"
-}
+    title: generatePageTitle("Sign Up")
+};
 
 export default function SignUpPage() {
     return (
         <>
-            <h1>Crear Cuenta</h1>
+            <Heading>Sign Up</Heading>
         </>
-    )
+    );
 }

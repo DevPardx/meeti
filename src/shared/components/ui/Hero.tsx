@@ -11,5 +11,5 @@ export default function Hero() {
                 >Get an account</Link>
             </div>
         </section>
-    )
+    );
 }
