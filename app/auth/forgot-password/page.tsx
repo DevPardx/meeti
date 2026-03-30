@@ -1,21 +1,21 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import ForgotPasswordForm from "@/src/features/auth/components/ForgotPasswordForm";
 import Heading from "@/src/shared/components/typography/Heading";
 import { generatePageTitle } from "@/src/shared/utils/metadata";
-import SignInForm from "@/src/features/auth/components/SignInForm";
 
 export const metadata: Metadata = {
-    title: generatePageTitle("Sign In")
+    title: generatePageTitle("Forgot Password")
 };
 
-export default function SignInPage() {
+export default function ForgotPasswordPage() {
     return (
         <>
-            <Heading>Sign In</Heading>
-            <SignInForm />
+            <Heading>Recover your access to meeti</Heading>
+            <ForgotPasswordForm />
             <nav className="mt-20 flex justify-between">
+                <Link href="/auth/sign-in" className="font-bold">Sign In</Link>
                 <Link href="/auth/sign-up" className="font-bold">Sign Up</Link>
-                <Link href="/auth/forgot-password" className="font-bold">Forgot Password</Link>
             </nav>
         </>
     );

@@ -7,6 +7,7 @@ export default function Logo() {
             alt="Meeti Logo"
             width={300}
             height={150}
+            loading="eager"
         />
     );
 }

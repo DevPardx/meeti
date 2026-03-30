@@ -16,7 +16,7 @@ export default function Heading({children, level = 1, className}: Props) {
         4: "text-xl",
         5: "text-lg",
         6: "text-sm",
-    }
+    };
 
     return (
         <Tag className={clsx("font-black uppercase", sizeMap[level], className)}>
