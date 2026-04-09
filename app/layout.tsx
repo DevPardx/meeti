@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import "./globals.css";
 import { generatePageTitle } from "@/src/shared/utils/metadata";
 
@@ -23,7 +24,10 @@ export default function RootLayout({
       lang="en"
       className={`${outfit.variable} h-full bg-white antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        {children}  
+        <ToastContainer position="top-right" autoClose={5000} />
+      </body>
     </html>
   );
 }

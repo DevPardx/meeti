@@ -1,15 +1,50 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
 import { Form, FormLabel, FormInput, FormSubmit } from "@/src/shared/components/forms";
+import { SignInInput, SignInSchema } from "../schemas/authSchema";
+import FormError from "@/src/shared/components/forms/FormError";
+import { signInAction } from "../actions/auth";
 
 export default function SignInForm() {
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(SignInSchema),
+        mode: "all"
+    });
+
+    const onSubmit = async (data: SignInInput) => {
+        const { error, success } = await signInAction(data);
+
+        if (error) {
+            toast.error(error);
+        }
+
+        if (success) {
+            toast.success(success);
+        }
+    };
+
     return (
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <FormLabel htmlFor="email">E-mail</FormLabel>
-            <FormInput type="email" id="email" placeholder="Enter your E-mail"/>
+            <FormInput
+                type="email"
+                id="email"
+                placeholder="Enter your E-mail"
+                {...register("email")}
+            />
+            {errors.email && <FormError>{errors.email.message}</FormError>}
 
             <FormLabel htmlFor="password">Password</FormLabel>
-            <FormInput type="password" id="password" placeholder="••••••••"/>
+            <FormInput
+                type="password"
+                id="password"
+                placeholder="••••••••"
+                {...register("password")}
+            />
+            {errors.password && <FormError>{errors.password.message}</FormError>}
             
             <FormSubmit value="Sign In" />
         </Form>
