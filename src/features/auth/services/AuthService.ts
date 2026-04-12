@@ -25,7 +25,8 @@ class AuthService {
             body: {
                 name,
                 email,
-                password
+                password,
+                callbackURL: "/dashboard"
             }
         });
 
