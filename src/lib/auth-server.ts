@@ -2,9 +2,11 @@ import { headers } from "next/headers";
 import { auth } from "./auth";
 
 export async function getServerSession() {
-    return await auth.api.getSession({
+    const session = await auth.api.getSession({
         headers: await headers()
     });
+
+    return session;
 }
 
 export async function requireAuth() {
@@ -12,5 +14,5 @@ export async function requireAuth() {
     return {
         session,
         isAuth: session ? true : false
-    }
+    };
 }

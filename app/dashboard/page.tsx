@@ -8,5 +8,5 @@ export default async function DashboardPage() {
 
     return (
         <Heading>Admin Panel</Heading>
-    )
+    );
 }
