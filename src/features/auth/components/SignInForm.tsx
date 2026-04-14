@@ -18,13 +18,8 @@ export default function SignInForm() {
     const onSubmit = async (data: SignInInput) => {
         const { error, success } = await signInAction(data);
 
-        if (error) {
-            toast.error(error);
-        }
-
-        if (success) {
-            redirect("/dashboard");
-        }
+        if (error) toast.error(error);
+        if (success) redirect("/dashboard");
     };
 
     return (

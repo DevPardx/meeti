@@ -1,5 +1,5 @@
 import { auth } from "@/src/lib/auth";
-import { SignInInput, SignUpInput } from "../schemas/authSchema";
+import { ForgotPasswordInput, SetPasswordInput, SignInInput, SignUpInput } from "../schemas/authSchema";
 import { authRepository, IAuthRepository } from "./AuthRepository";
 import { APIError } from "better-auth";
 import { headers } from "next/headers";
@@ -61,6 +61,60 @@ class AuthService {
             return {
                 error: "",
                 success: "Session started successfully"
+            };
+        } catch (error) {
+            if (error instanceof APIError) {
+                return {
+                    error: error.message,
+                    success: ""
+                };
+            }
+        }
+
+        return {
+            error: "",
+            success: ""
+        };
+    }
+
+    async requestPasswordReset(credentials: ForgotPasswordInput) {
+        const { email } = credentials;
+
+        const user = await this.authRepository.userExists(email);
+
+        if (!user) {
+            return {
+                error: "The user does not exist.",
+                success: ""
+            };
+        }
+
+        await auth.api.requestPasswordReset({
+            body: {
+                email
+            }
+        });
+
+        return {
+            error: "",
+            success: "We've sent your an email with the instructions."
+        };
+    }
+
+    async confirmPasswordReset(credentials: SetPasswordInput, token: string) {
+        const { newPassword } = credentials;
+
+        try {
+            await auth.api.resetPassword({
+                body: {
+                    newPassword,
+                    token
+                }
+            });
+
+            return {
+                success: "Your password has been successfully reset.",
+                error: ""
             };
         } catch (error) {
             if (error instanceof APIError) {
