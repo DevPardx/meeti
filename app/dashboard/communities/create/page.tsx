@@ -1,0 +1,22 @@
+import { Metadata } from "next";
+import Link from "next/link";
+import Heading from "@/src/shared/components/typography/Heading";
+import { generatePageTitle } from "@/src/shared/utils/metadata";
+import CreateCommunity from "@/src/features/communities/components/CreateCommunity";
+
+export const metadata: Metadata = {
+    title: generatePageTitle("Create Community")
+};
+
+export default function CreateCommunityPage() {
+    return (
+        <>
+            <Heading>Create community</Heading>
+            <Link
+                href="/dashboard/communities"
+                className="mt-5 block lg:inline-block text-center bg-orange-500 hover:bg-orange-600 transition-colors text-xs lg:text-sm text-white py-3 px-5 font-bold rounded-md"
+            >Return to my Communities</Link>
+            <CreateCommunity />
+        </>
+    );
+}

@@ -9,7 +9,7 @@ export default function AuthLayout({
     return (
         <div className="h-screen flex flex-col items-center justify-center">
             <div className="flex justify-center pt-10">
-                <Link href='/' className="w-48">
+                <Link href="/" className="w-48">
                     <Logo />
                 </Link>
             </div>

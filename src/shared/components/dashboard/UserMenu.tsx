@@ -10,7 +10,7 @@ export default function UserMenu() {
             <MenuButton className="text-gray-400 relative flex rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                 <span className="absolute -inset-1.5" />
                 <span className="sr-only">Abrir Menú de Usuario</span>
-                <Bars3Icon className='size-6' />
+                <Bars3Icon className="size-6" />
             </MenuButton>
 
             <MenuItems
