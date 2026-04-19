@@ -15,6 +15,9 @@ export async function createCommunityAction(input: CommunityInput) {
         };
     }
 
-    const response = await communityService.create(data.data, session.user.id);
-    return response;
+    await communityService.create(data.data, session.user.id);
+    return {
+        error: "",
+        success: "Community created successfully"
+    };
 }

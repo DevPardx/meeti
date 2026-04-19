@@ -2,6 +2,7 @@ import { useFormContext } from "react-hook-form";
 import { FormInput, FormLabel, FormTextArea } from "@/src/shared/components/forms";
 import { CommunityInput } from "../schemas/communitySchema";
 import FormError from "@/src/shared/components/forms/FormError";
+import UploadImage from "@/src/shared/components/upload/UploadImage";
 
 export default function CommunityForm() {
     const { register, formState: {errors} } = useFormContext<CommunityInput>();
@@ -16,6 +17,9 @@ export default function CommunityForm() {
                 {...register("name")}
             />
             {errors.name && <FormError>{errors.name.message}</FormError>}
+
+            <FormLabel>Community Image</FormLabel>
+            <UploadImage />
 
             <FormLabel htmlFor="description">Community Description</FormLabel>
             <FormTextArea

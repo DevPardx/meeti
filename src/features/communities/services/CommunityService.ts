@@ -11,11 +11,6 @@ class CommunityService {
             ...data,
             createdBy: userId
         });
-
-        return {
-            error: "",
-            success: "Community created successfully"
-        };
     }
 }
 

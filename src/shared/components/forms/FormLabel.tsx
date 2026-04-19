@@ -6,6 +6,6 @@ export default function FormLabel(props: Props) {
     const { children } = props;
 
     return (
-        <label {...props} className="block">{children}</label>
+        <label {...props} className="block text-sm md:text-base">{children}</label>
     );
 }
